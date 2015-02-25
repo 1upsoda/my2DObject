@@ -12,7 +12,7 @@ public class WeaponController
 	private WeaponFrame appFrame;
 	public WeaponController()
 	{
-		myWeapon = new Weapon[3][2];
+		myWeapon = new Weapon[13][2];
 		fillMyWeaponArray();
 		appFrame = new WeaponFrame(this);
 	}
@@ -23,8 +23,21 @@ public class WeaponController
 			for(int col = myWeapon[row].length-1; col >= 0; col--)
 			{
 				String name = "" + row + "" + col + " Weapon";
-				int damage = (int) (Math.random() * 65);
+				int damage = (int) ((Math.random() * 20)+55);
 				boolean canTakeHeads = (damage % 2 ==0);
+				if(canTakeHeads == false)
+				{
+					
+					int criticalBonus = (int) (Math.random() * 100);
+					if(criticalBonus <= 15)
+					{
+					damage = (int) (((Math.random() * 20)+55)*3);
+					}
+				}
+				else
+				{
+					
+				}
 				
 				myWeapon[row][col] = new Weapon(name, damage, canTakeHeads);
 			}
@@ -46,5 +59,12 @@ public class WeaponController
 		JOptionPane.showMessageDialog(appFrame, "Welcome to Swords");
 		
 	}
-	
+//	public void addToArray()
+//	{
+//		int row = 0;
+//		int col = 0;
+//		
+//		myWeapon[row][col] = new Weapon(userInputName, damage, canTakeHeads);
+//	}
+//	
 }
