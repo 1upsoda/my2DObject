@@ -23,7 +23,7 @@ public class WeaponController
 			for(int col = myWeapon[row].length-1; col >= 0; col--)
 			{
 				String name = "" + row + "" + col + " Weapon";
-				int damage = (int) ((Math.random() * 20)+55);
+				int damage = 0;
 				boolean canTakeHeads = (damage % 2 ==0);
 				if(canTakeHeads == false)
 				{
@@ -31,12 +31,36 @@ public class WeaponController
 					int criticalBonus = (int) (Math.random() * 100);
 					if(criticalBonus <= 15)
 					{
-					damage = (int) (((Math.random() * 20)+55)*3);
+					damage += (int) (((Math.random() * 20)+55)*3);
+					}
+					else
+					{
+						damage += (int) (((Math.random() * 20)+55));
+					}
+					criticalBonus = (int) (Math.random() * 100);
+					if(criticalBonus <= 15)
+					{
+					damage += (int) (((Math.random() * 20)+55)*3);
+					}
+					criticalBonus = (int) (Math.random() * 100);
+					if(criticalBonus <= 15)
+					{
+					damage += (int) (((Math.random() * 20)+55)*3);
+					}
+					criticalBonus = (int) (Math.random() * 100);
+					if(criticalBonus <= 15)
+					{
+					damage += (int) (((Math.random() * 20)+55)*3);
+					}
+					criticalBonus = (int) (Math.random() * 100);
+					if(criticalBonus <= 15)
+					{
+					damage += (int) (((Math.random() * 20)+55)*3);
 					}
 				}
 				else
 				{
-					
+					damage = (int) ((Math.random() * 20)+55);
 				}
 				
 				myWeapon[row][col] = new Weapon(name, damage, canTakeHeads);
